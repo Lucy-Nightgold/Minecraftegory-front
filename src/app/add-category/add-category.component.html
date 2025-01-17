@@ -1,0 +1,12 @@
+<h2>Add category</h2>
+<form role="form" [formGroup]="catgeoryForm" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="name" placeholder="category name">
+  <label for="parent">Select parent category:</label>
+  <select id="parent" formControlName="parentId">
+    <option [value]="0">root</option>
+    @for (category of potentialParents; track category.name) {
+      <option [value]="category.id">{{category.name}}</option>
+    }
+  </select>
+  <input type="submit" value="create category">
+</form>

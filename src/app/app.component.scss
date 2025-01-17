@@ -3,4 +3,13 @@ app-navbar {
   width: 100%;
   position: fixed;
   top: 0;
+  z-index: 100;
+}
+
+#content {
+  width: 100%;
+  height: 95%;
+  position: fixed;
+  bottom: 0;
+  overflow: auto;
 }
