@@ -1,0 +1,45 @@
+@if (id == 0) {
+  <app-categories-list [categories]="displayedCategories"></app-categories-list>
+} @else {
+  <div id="page">
+    <div id="category">
+      @if (parent != null) {
+        <a [routerLink]="'/' + parent.id.toString()">{{parent.name}}</a>
+      } @else {
+        <a [routerLink]="'/0'">root</a>
+      }
+      <p>test</p>
+      <form role="form" (ngSubmit)="onSubmit()" [formGroup]="updateForm">
+        <div>
+          <label for="name">category name</label>
+          <input type="text" id="name" placeholder="category name" formControlName="name">
+        </div>
+        <div>
+          <label for="parent">category parent</label>
+          <select id="parent" formControlName="parentId">
+            <option [value]="0">root</option>
+            @for (category of potentialParents; track category.name) {
+              <option [value]="category.id">{{category.name}}</option>
+            }
+          </select>
+        </div>
+        <input type="submit" value="save">
+        <button type="button" (click)="delete()">delete</button>
+        <p>{{category?.creationDate}}</p>
+      </form>
+    </div>
+    <p></p>
+    <app-categories-list [categories]="displayedCategories"></app-categories-list>
+  </div>
+}
+<div id="page-nav">
+  @if (page > 1) {
+    <button type="button" (click)="prevPage()"><</button>
+  }
+  <p>{{page + '/' + maxPage}}</p>
+  @if (page < maxPage) {
+    <button type="button" (click)="nextPage()">></button>
+  }
+</div>
+
+
