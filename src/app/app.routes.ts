@@ -5,5 +5,5 @@ import {ContentComponent} from './content/content.component';
 export const routes: Routes = [
   { path: '', component: ContentComponent },
   { path: 'add', component: AddCategoryComponent},
-  { path: ':id', component: ContentComponent}
+  { path: ':id?page=:page', component: ContentComponent}
 ];

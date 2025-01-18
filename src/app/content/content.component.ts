@@ -18,10 +18,14 @@ import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 })
 export class ContentComponent {
   @Input() id: number = 0;
+  page: number = 1;
   category: Category | null = null;
   parent: Category | null = null;
-  children: Category[] = [];
+  categories: Category[] = [];
+  displayedCategories: Category[] = [];
   potentialParents: Category[] = [];
+  maxPage: number = 1;
+  readonly CATEGORIES_PER_PAGE = 10;
 
   updateForm = new FormGroup({
     name: new FormControl("", Validators.compose(
@@ -37,10 +41,10 @@ export class ContentComponent {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params['id'] == undefined ? 0: +params['id'];
+      this.page = params['page'] == undefined ? 1: +params['page'];
       if (this.id == 0) {
-        console.log(this.id);
         this.service.getRootCategories().subscribe(categories => {
-          this.children = categories;
+          this.pagination(categories);
         })
       } else {
         this.service.getCategory(this.id).subscribe(category => {
@@ -51,13 +55,14 @@ export class ContentComponent {
             this.parent = parent;
           })
           this.service.getChildren(this.category.id).subscribe(children => {
-            this.children = children;
+            this.pagination(children);
           })
           this.service.getAvailableParents(this.category.id).subscribe(parents => {
             this.potentialParents = parents;
           })
         })
       }
+
     })
   }
 
@@ -76,5 +81,35 @@ export class ContentComponent {
     this.service.deleteCategory(this.id).subscribe(() => {
       this.router.navigate(['/']);
     })
+  }
+
+  nextPage() {
+    if (this.page < this.maxPage) {
+      this.page++;
+      this.pagination(this.categories);
+    }
+  }
+
+  prevPage() {
+    if (this.page > 1) {
+      this.page--;
+      this.pagination(this.categories);
+    }
+  }
+
+  private pagination(categories: Category[]) {
+    this.categories = categories;
+    this.maxPage = Math.ceil(categories.length / this.CATEGORIES_PER_PAGE);
+    if (this.page < 1 || this.page > this.maxPage) {
+      this.page = 1;
+    }
+    const startIndex = (this.page - 1) * this.CATEGORIES_PER_PAGE;
+    const endIndex = Math.min(categories.length, this.page * this.CATEGORIES_PER_PAGE);
+    console.log(this.maxPage);
+    console.log(startIndex);
+    console.log(endIndex);
+    console.log(categories.length)
+    this.displayedCategories = categories.slice(startIndex, endIndex);
+    console.log(this.displayedCategories)
   }
 }
