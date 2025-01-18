@@ -1,0 +1,6 @@
+@for (category of categories; track category.id) {
+  <div>
+    <p [routerLink]="'/' + category.id.toString()">{{category.name}}</p>
+    <a (click)="delete(category.id)">delete</a>
+  </div>
+}
