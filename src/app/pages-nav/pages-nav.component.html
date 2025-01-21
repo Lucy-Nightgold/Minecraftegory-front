@@ -1,0 +1,11 @@
+@if (maxPage > 1) {
+  <div id="page-nav">
+    @if (page > 1) {
+      <button type="button" (click)="prevPage()"><</button>
+    }
+    <p>{{page + '/' + maxPage}}</p>
+    @if (page < maxPage) {
+      <button type="button" (click)="nextPage()">></button>
+    }
+  </div>
+}

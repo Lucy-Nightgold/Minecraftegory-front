@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Category} from '../entities/category.entity';
+import {Paginated} from '../entities/Paginated.entity';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +20,20 @@ export class CategoryService {
     return this.http.get<Category>(`${this.ApiUrl}/parent/${id}`);
   }
 
-  getChildren(id: number) {
-    return this.http.get<Category[]>(`${this.ApiUrl}/children/${id}`);
+  getChildren(id: number, page: number, categoriesPerPage: number) {
+    const params = {
+      page: page,
+      categoriesPerPage: categoriesPerPage
+    }
+    return this.http.get<Paginated>(`${this.ApiUrl}/children/${id}`, {params: params});
   }
 
-  getRootCategories() {
-    return this.http.get<Category[]>(`${this.ApiUrl}/root`);
+  getRootCategories(page: number, categoriesPerPage: number) {
+    const params = {
+      page: page,
+      categoriesPerPage: categoriesPerPage
+    }
+    return this.http.get<Paginated>(`${this.ApiUrl}/root`, {params: params});
   }
 
   getAvailableParents(id: number) {
@@ -34,6 +43,7 @@ export class CategoryService {
   getAllCategories() {
     return this.http.get<Category[]>(this.ApiUrl);
   }
+
 
   sendCategory(name: string, parentId: number) {
     const body = {
