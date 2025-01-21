@@ -1,5 +1,5 @@
 @if (id == 0) {
-  <app-categories-list [categories]="displayedCategories"></app-categories-list>
+  <app-categories-list [categories]="categories"></app-categories-list>
 } @else {
   <div id="page">
     <div id="category">
@@ -28,18 +28,21 @@
         <p>{{category?.creationDate}}</p>
       </form>
     </div>
-    <p></p>
-    <app-categories-list [categories]="displayedCategories"></app-categories-list>
+    <app-categories-list [categories]="categories"></app-categories-list>
   </div>
 }
-<div id="page-nav">
-  @if (page > 1) {
-    <button type="button" (click)="prevPage()"><</button>
-  }
-  <p>{{page + '/' + maxPage}}</p>
-  @if (page < maxPage) {
-    <button type="button" (click)="nextPage()">></button>
-  }
-</div>
+<app-pages-nav [maxPage]="maxPage" (onPageUpdate)="changePage($event)"></app-pages-nav>
+<!--@if (maxPage > 1) {
+  <div id="page-nav">
+    @if (page > 1) {
+      <button type="button" (click)="prevPage()"><</button>
+    }
+    <p>{{page + '/' + maxPage}}</p>
+    @if (page < maxPage) {
+      <button type="button" (click)="nextPage()">></button>
+    }
+  </div>
+}-->
+
 
 
