@@ -3,9 +3,10 @@ services:
     build: .
     container_name: minecraftegory-front
     ports:
-      - "4200"
+      - "4200:4200"
     volumes:
       - .:/app
+      - minecraftegory-front-node-modules:/app/nodes_modules
 
 volumes:
-  node-modules:
+  minecraftegory-front-node-modules:
