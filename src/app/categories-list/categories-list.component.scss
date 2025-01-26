@@ -1,0 +1,47 @@
+$color-purple: #CDB4DB;
+$color-light-pink: #FFC8DD;
+$color-pink: #FFAFCC;
+$color-light-blue: #BDE0FE;
+$color-blue: #A2D2FF;
+
+#list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.8vw;
+  overscroll-behavior-x: none;
+  .category {
+    width: 95%;
+    align-self: center;
+    display: flex;
+    justify-content: space-around;
+    background-color: $color-light-pink;
+    border-radius: 0.5vw;
+    padding-top: 0.1vw;
+    padding-bottom: 0.1vw;
+    .text {
+      width: 15%;
+      align-self: center;
+      font-size: 110%;
+      text-align: center;
+    }
+    .children-menu {
+      display: flex;
+      gap: 0.5vw;
+      width: 10%;
+      .children {
+        display: flex;
+      }
+    }
+    .buttons {
+      font-size: 125%;
+      align-self: center;
+      background-color: #fb99bb;
+      border: solid 0.25vw $color-purple;
+      padding: 0.15vw 0.4vw 0.15vw 0.4vw;
+      border-radius: 0.3vw;
+      color: black;
+      cursor: pointer;
+    }
+  }
+}

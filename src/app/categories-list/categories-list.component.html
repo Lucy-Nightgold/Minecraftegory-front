@@ -1,16 +1,25 @@
-@for (category of categories; track category.id) {
-  <div>
-    <p [routerLink]="'/' + category.id.toString()">{{category.name}}</p>
-    <p>date de création: {{category.creationDate}}</p>
-    <div>
-      @if (children.get(category) != undefined) {
-        <p>Children categories</p>
-        @for (categoryChildren of children.get(category); track children.size) {
-          <p>{{categoryChildren.name}}</p>
+<div id="list">
+  @for (category of categories; track category.id) {
+    <div class="category">
+      <p [routerLink]="'/' + category.id.toString()" class="text">{{category.name}}</p>
+      <p class="text">creation date: {{category.creationDate}}</p>
+      <p class="text">
+        @if (category.parentId == 0) {
+          root category
         }
-      }
+      </p>
+      <div class="children-menu text">
+        @if (children.get(category) != undefined) {
+          <p>Children categories :</p>
+          <div class="children">
+            @for (categoryChildren of children.get(category); track children.size) {
+              <p>{{categoryChildren.name}}</p>
+            }
+          </div>
+        }
+      </div>
+      <p [routerLink]="'/edit/' + category.id" class="buttons">edit</p>
+      <p (click)="delete(category.id)" class="buttons">delete</p>
     </div>
-    <a [routerLink]="'/edit/' + category.id">edit</a>
-    <a (click)="delete(category.id)">delete</a>
-  </div>
-}
+  }
+</div>

@@ -1,3 +1,5 @@
-<app-filters (onFilterApply)="updateFilers($event)"></app-filters>
-<app-categories-list [categories]="categories" [children]="categoryChildren"></app-categories-list>
-<app-pages-nav [maxPage]="maxPage" (onPageUpdate)="changePage($event)"></app-pages-nav>
+<div id="content">
+  <app-filters (onFilterApply)="updateFilers($event)"></app-filters>
+  <app-categories-list [categories]="categories" [children]="categoryChildren"></app-categories-list>
+  <app-pages-nav [maxPage]="maxPage" (onPageUpdate)="changePage($event)"></app-pages-nav>
+</div>

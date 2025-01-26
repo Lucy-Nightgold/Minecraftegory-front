@@ -1,0 +1,17 @@
+$color-purple: #CDB4DB;
+$color-light-pink: #FFC8DD;
+$color-pink: #FFAFCC;
+$color-light-blue: #BDE0FE;
+$color-blue: #A2D2FF;
+
+#content {
+  width: 100%;
+  height: 94%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: aliceblue;
+}
