@@ -20,7 +20,7 @@ export class AddCategoryComponent {
       Validators.maxLength(50),
       Validators.minLength(3)]
     )),
-    parentId: new FormControl("", Validators.required)
+    parentId: new FormControl(0, Validators.required)
   })
 
   id: number = 0;
