@@ -16,24 +16,8 @@ export class CategoryService {
     return this.http.get<Category>(`${this.ApiUrl}/${id}`);
   }
 
-  getParent(id: number) {
-    return this.http.get<Category>(`${this.ApiUrl}/parent/${id}`);
-  }
-
-  getChildren(id: number, page: number, categoriesPerPage: number) {
-    const params = {
-      page: page,
-      categoriesPerPage: categoriesPerPage
-    }
-    return this.http.get<Paginated>(`${this.ApiUrl}/children/${id}`, {params: params});
-  }
-
-  getRootCategories(page: number, categoriesPerPage: number) {
-    const params = {
-      page: page,
-      categoriesPerPage: categoriesPerPage
-    }
-    return this.http.get<Paginated>(`${this.ApiUrl}/root`, {params: params});
+  getChildren(id: number) {
+    return this.http.get<Category[]>(`${this.ApiUrl}/children/${id}`);
   }
 
   getAvailableParents(id: number) {
@@ -42,6 +26,23 @@ export class CategoryService {
 
   getAllCategories() {
     return this.http.get<Category[]>(this.ApiUrl);
+  }
+
+  getCategories(page: number, categoriesPerPage: number, sort: number) {
+    const params = {
+      categoriesPerPage: categoriesPerPage,
+      sortValue: sort
+    }
+    return this.http.get<Paginated>(`${this.ApiUrl}/page/${page}`, {params: params});
+  }
+
+  searchCategories(term: string, page: number, categoriesPerPage: number, sort: number) {
+    const params = {
+      page: page,
+      categoriesPerPage: categoriesPerPage,
+      sortValue: sort
+    }
+    return this.http.get<Paginated>(`${this.ApiUrl}/search/${term}`, {params: params});
   }
 
 
