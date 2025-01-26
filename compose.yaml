@@ -1,0 +1,11 @@
+services:
+  minecraftegory-front:
+    build: .
+    container_name: minecraftegory-front
+    ports:
+      - "4200"
+    volumes:
+      - .:/app
+
+volumes:
+  node-modules:
