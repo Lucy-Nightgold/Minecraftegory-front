@@ -1,4 +1,24 @@
+$color-purple: #CDB4DB;
+$color-light-pink: #FFC8DD;
+$color-pink: #FFAFCC;
+$color-light-blue: #BDE0FE;
+$color-blue: #A2D2FF;
+
 form {
   display: flex;
-  gap: 5%;
+  gap: 7.5%;
+  input[type='submit'] {
+    background-color: $color-purple;
+    padding: 0.2vw 0.35vw 0.2vw 0.35vw;
+    border: none;
+    font-size: 120%;
+    border-radius: 0.3vw;
+    cursor: pointer;
+  }
+  input[type='search'] {
+    background-color: $color-blue;
+    border-radius: 0.3vw;
+    border: none;
+    padding-left: 0.5vw;
+  }
 }

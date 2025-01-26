@@ -1,15 +1,34 @@
+$color-purple: #CDB4DB;
+$color-light-pink: #FFC8DD;
+$color-pink: #FFAFCC;
+$color-light-blue: #BDE0FE;
+$color-blue: #A2D2FF;
+
 nav {
-  background-color: aliceblue;
+  background-color: $color-light-blue;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 0 10%;
-  height: 100%;
+  position: fixed;
+  width: inherit;
+  height: 6%;
+  top: 0;
+  left: 0;
   div {
     display: flex;
     gap: 10%;
+    align-items: center;
+    width: 20%;
+    p {
+      font-size: 120%;
+      color: black;
+      cursor: pointer;
+      background-color: $color-purple;
+      padding: 0.2vw 0.35vw 0.2vw 0.35vw;
+      border-radius: 0.3vw;
+    }
   }
-
   h1 {
     cursor: pointer;
   }

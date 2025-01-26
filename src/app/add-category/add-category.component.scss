@@ -1,0 +1,43 @@
+$color-purple: #CDB4DB;
+$color-light-pink: #FFC8DD;
+$color-pink: #FFAFCC;
+$color-light-blue: #BDE0FE;
+$color-blue: #A2D2FF;
+
+#content {
+  height: 94%;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+  form {
+    margin-top: 2vw;
+    display: flex;
+    gap: 2vw;
+  }
+  input[type='text'] {
+    background-color: $color-blue;
+    border-radius: 0.3vw;
+    border: none;
+    padding: 0.4vw 0.5vw;
+  }
+  label {
+    align-self: center;
+  }
+  select, #submit {
+    background-color: $color-purple;
+    padding: 0.3vw 0.4vw;
+    border: none;
+    font-size: 120%;
+    border-radius: 0.3vw;
+  }
+
+  #submit {
+    cursor: pointer;
+  }
+}
