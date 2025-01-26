@@ -28,9 +28,12 @@ $color-blue: #A2D2FF;
     .children-menu {
       display: flex;
       gap: 0.5vw;
-      width: 10%;
       .children {
         display: flex;
+        overflow: scroll;
+        p {
+         margin-right: 0.2vw;
+        }
       }
     }
     .buttons {
