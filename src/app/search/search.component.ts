@@ -19,6 +19,7 @@ export class SearchComponent {
   }
 
   onSubmit() {
-    //TODO: navigate to search page
+    const term = this.searchFrom.controls['term'].value;
+    this.router.navigate([`/search/${term}`]);
   }
 }

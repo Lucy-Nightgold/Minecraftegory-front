@@ -1,0 +1,8 @@
+<form [formGroup]="filters" (change)="onSubmit()">
+  <label for="sort">Sort</label>
+  <select id="sort" formControlName="sort">
+    <option [value]="0">alphanumeric</option>
+    <option [value]="1">creation date</option>
+    <option [value]="2">children number</option>
+  </select>
+</form>

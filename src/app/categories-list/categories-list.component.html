@@ -1,6 +1,16 @@
 @for (category of categories; track category.id) {
   <div>
     <p [routerLink]="'/' + category.id.toString()">{{category.name}}</p>
+    <p>date de création: {{category.creationDate}}</p>
+    <div>
+      @if (children.get(category) != undefined) {
+        <p>Children categories</p>
+        @for (categoryChildren of children.get(category); track children.size) {
+          <p>{{categoryChildren.name}}</p>
+        }
+      }
+    </div>
+    <a [routerLink]="'/edit/' + category.id">edit</a>
     <a (click)="delete(category.id)">delete</a>
   </div>
 }

@@ -14,6 +14,7 @@ import {CategoryService} from '../services/category.service';
 export class CategoriesListComponent {
 
   @Input() categories: Category[] = [];
+  @Input() children: Map<Category, Category[]> = new Map();
 
   constructor(private service: CategoryService) {
   }

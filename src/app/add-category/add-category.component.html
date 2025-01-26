@@ -1,5 +1,5 @@
 <h2>Add category</h2>
-<form role="form" [formGroup]="catgeoryForm" (ngSubmit)="onSubmit()">
+<form role="form" [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
   <input type="text" formControlName="name" placeholder="category name">
   <label for="parent">Select parent category:</label>
   <select id="parent" formControlName="parentId">
@@ -8,5 +8,5 @@
       <option [value]="category.id">{{category.name}}</option>
     }
   </select>
-  <input type="submit" value="create category">
+  <input type="submit" [value]="id == 0 ? 'create category': 'update category'">
 </form>
